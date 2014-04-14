@@ -1,0 +1,33 @@
+{
+  "name": "intersect.js",
+  "version": "0.0.1",
+  "description": "Some thin wrappers around Spine.js + Backbone.js",
+  "main": "intersect.js",
+  "dependencies": {
+    "angular": "^1.2.15",
+    "chai": "^1.9.1",
+    "glp": "^0.1.10",
+    "sinon": "^1.9.1"
+  },
+  "devDependencies": {
+    "mocha": "^1.18.2"
+  },
+  "scripts": {
+    "test": "mocha specs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monokrome/intersect.js"
+  },
+  "keywords": [
+    "angular",
+    "spine",
+    "framework"
+  ],
+  "author": "Brandon R. Stoner <monokrome@limpidtech.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/monokrome/intersect.js/issues"
+  },
+  "homepage": "https://github.com/monokrome/intersect.js"
+}

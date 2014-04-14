@@ -1,0 +1,32 @@
+{
+  "name": "intersect.js",
+  "main": "intersect.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/monokrome/intersect.js",
+  "authors": [
+    "Brandon R. Stoner <monokrome@limpidtech.com>"
+  ],
+  "description": "Some thin wrappers around Spine.js + Backbone.js",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "angular",
+    "spine",
+    "framework"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.16"
+  }
+}
