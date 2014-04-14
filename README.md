@@ -12,7 +12,7 @@ better injection behavior. Instead of the standard Angular way, it allows you
 to define a service like this:
 
 ```javascript
-angular.module('example')
+intersect.module('example')
 	.service('example.services.one', ['x', 'y', 'z'], function (x, y, z) {});
 
 ```
@@ -24,7 +24,7 @@ This is especially useful in CoffeeScript, due to the following syntax being
 possile:
 
 ```coffee
-angular.module 'example'
+intersect.module 'example'
 	.service 'example.services.one', [
 		'x'
 		'y'
