@@ -7,6 +7,7 @@ describe('intersect', function () {
       wrappedComponentTypes = [
         'service',
         'factory',
+        'provider',
       ];
 
 
