@@ -12,15 +12,15 @@
       extendInjection = function (module, attribute) {
       var original = module[attribute];
       return (function (name, dependencies, fn) {
-        dependencies = angular.copy(dependencies);
         if (typeof fn === 'function' && angular.isArray(dependencies)) {
+          dependencies = angular.copy(dependencies);
           dependencies.push(fn);
         }
         return original.call(module, name, dependencies);
       });
     },
 
-    getWrappedModule = function (module) {
+    getWrappedComponent = function (module) {
       return {
         service: extendInjection(module, 'service'),
         factory: extendInjection(module, 'factory'),
@@ -32,7 +32,7 @@
   angular.extend(intersect, {
     module: function () {
       var module = angular.extend({}, angular.module.apply(angular, arguments));
-      return getWrappedModule(module);
+      return getWrappedComponent(module);
     },
     conflict: function (providedRoot) {
       if (typeof providedRoot === 'undefined') {

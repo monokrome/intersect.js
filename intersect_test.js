@@ -12,20 +12,17 @@ describe('intersect', function () {
 
   beforeEach(function () {
     var module = angular.module('example', []),
-        service = module.service('example.service', [], (function () {})),
-        factory = module.service('example.factory', [], (function () {})),
-        typeIndex, type;
+        typeIndex, type, component;
 
     // Create an initial "example" module for working with before we
     // stub angular.module itself.
     this.natives = {
       module: module,
-      service: service,
-      factory: factory
     };
 
     for (typeIndex in wrappedComponentTypes) {
       type = wrappedComponentTypes[typeIndex];
+      this.natives[type] = module[type]('example.'+type, [], (function () {})),
 
       sinon
         .stub(this.natives.module, type)
@@ -39,7 +36,11 @@ describe('intersect', function () {
 
 
   afterEach(function () {
-    this.natives.module.service.restore();
+    var typeIndex, type;
+    for (typeIndex in wrappedComponentTypes) {
+      type = wrappedComponentTypes[typeIndex];
+      this.natives.module[type].restore();
+    }
     angular.module.restore();
   });
 
@@ -62,27 +63,57 @@ describe('intersect', function () {
 
 
     describe('returned value', function () {
-      it('should support trailing function for injections', function () {
-        var dependencies = ['a', 'b'],
-            definition = (function () {}),
-            module = intersect.module('example'),
-            nativeModule = angular.module('example'),
-            expectation, typeIndex, type;
+      var typeIndex, type;
 
-        for (typeIndex in wrappedComponentTypes) {
-          type = wrappedComponentTypes[typeIndex];
+      for (typeIndex in wrappedComponentTypes) {
+        (function(type) {
+          describe('#' + type, function () {
+            beforeEach(function () {
+              this.dependencies = ['a', 'b']
+              this.definition = (function () {});
+              this.module = intersect.module('example');
+              this.componentName = 'example.' + type;
 
-          expectation = [
-            'example.'+type,
-            ['a', 'b', definition]
-          ];
+              this.expectation = [
+                'example.' + type,
+                ['a', 'b', this.definition]
+              ]
+            });
 
-          module[type]('example.'+type, dependencies, definition);
-          chai
-            .expect(nativeModule[type].lastCall.args)
-            .to.deep.equal(expectation);
-        }
-      });
+            it('should support all standard angular interfaces', function () {
+              this.module[type](
+                this.componentName,
+                this.dependencies.concat(this.definition)
+              );
+
+              chai
+                .expect(this.natives.module[type].lastCall.args)
+                .to.deep.equal(this.expectation)
+
+              this.module[type](
+                this.componentName,
+                this.definition
+              );
+
+              chai
+                .expect(this.natives.module[type].lastCall.args)
+                .to.deep.equal([this.componentName, this.definition])
+            });
+
+            it('should support trailing function for injections', function () {
+              this.module[type](
+                this.componentName,
+                this.dependencies,
+                this.definition
+              );
+
+              chai
+                .expect(this.natives.module[type].lastCall.args)
+                .to.deep.equal(this.expectation)
+            });
+          });
+        })(wrappedComponentTypes[typeIndex]);
+      }
     });
   });
 });
