@@ -81,9 +81,9 @@ intersect.module 'example'
         'some.service.somewhere'
         'some.controller.elsewhere'
         
-    ], ($injected) ->
-        console.log $injected.another
-        console.log $injected.somewhere
-        console.log $injected.elsewhere
+    ], () ->
+        console.log $.example.service.two
+        console.log $.some.service.somewhere
+        console.log $.some.controller.elsewhere
 
 ```
