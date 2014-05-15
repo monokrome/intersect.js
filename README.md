@@ -81,7 +81,7 @@ intersect.module 'example'
         'some.service.somewhere'
         'some.controller.elsewhere'
         
-    ], () ->
+    ], ($) ->
         console.log $.example.service.two
         console.log $.some.service.somewhere
         console.log $.some.controller.elsewhere
