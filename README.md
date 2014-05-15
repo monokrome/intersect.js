@@ -63,10 +63,10 @@ intersect.module('example')
 		'some.service.somewhere',
 		'some.controller.elsewhere'
 
-	], function ($injected) {
-		console.log($injected.another);
-		console.log($injected.somewhere);
-		console.log($injected.elsewhere);
+	], function ($) {
+		console.log($.example.service.two);
+		console.log($.some.service.somewhere);
+		console.log($.some.controller.elsewhere);
 	});
 
 ```
