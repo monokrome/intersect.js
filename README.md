@@ -1,7 +1,7 @@
 intersect.js
 ============
 
-Some thin wrappers around Spine.js + Angular.js
+Some thin wrappers around Angular.js
 
 
 Concept
