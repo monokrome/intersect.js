@@ -21,7 +21,7 @@ This might seem like a little change, but it causes Angular to seem more
 conventional in terms of CommonJS as well as provides the nice benefit that you
 don't need to keep a function inside of an array (which is a bit peculiar).
 This is especially useful in CoffeeScript, due to the following syntax being
-possile:
+possible:
 
 ```coffee
 intersect.module 'example'
