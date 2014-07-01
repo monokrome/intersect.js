@@ -22,9 +22,12 @@
 
     getWrappedComponent = function (module) {
       return angular.extend({}, module, {
-        service: extendInjection(module, 'service'),
+        provider: extendInjection(module, 'provider'),
         factory: extendInjection(module, 'factory'),
-        provider: extendInjection(module, 'provider')
+        service: extendInjection(module, 'service'),
+        value: extendInjection(module, 'value'),
+        constant: extendInjection(module, 'constant'),
+        directive: extendInjection(module, 'directive'),
       });
     };
 

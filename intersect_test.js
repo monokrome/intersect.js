@@ -5,9 +5,12 @@ describe('intersect', function () {
       chai = require('chai'),
       
       wrappedComponentTypes = [
-        'service',
-        'factory',
         'provider',
+        'factory',
+        'service',
+        'value',
+        'constant',
+        'directive',
       ];
 
 
