@@ -6,7 +6,6 @@
   "dependencies": {
     "angular": "^1.2.18",
     "chai": "^1.9.1",
-    "glp": "^0.1.16",
     "sinon": "^1.10.2"
   },
   "devDependencies": {
