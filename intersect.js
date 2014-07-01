@@ -21,11 +21,11 @@
     },
 
     getWrappedComponent = function (module) {
-      return {
+      return angular.extend({}, module, {
         service: extendInjection(module, 'service'),
         factory: extendInjection(module, 'factory'),
         provider: extendInjection(module, 'provider')
-      }
+      });
     };
 
   angular.extend(intersect, angular);
