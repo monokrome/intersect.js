@@ -27,10 +27,13 @@ a dot.
 intersect.service('example.services.one', ['x', 'y', 'z'], function (x, y, z) {});
 ```
 
-This might seem like a small change, but it causes Angular to seem more
-convenient. You don't need to keep your component construction function inside
-of an array any more, and defining a new component doesn't require getting a
-reference to the module that it was created within.
+This might seem like a small change, but it is a bit more convenient when
+creating new Angularcomponents. You don't need to keep your component
+construction function inside of an array any more, and defining a new component
+doesn't require getting a reference to the module that it was created within.
+
+The module `example` is expected to already exist, and intersect will prepare
+the reference for you.
 
 Here's an example in CoffeeScript as well:
 
