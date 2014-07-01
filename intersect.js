@@ -31,8 +31,7 @@
       });
     };
 
-  angular.extend(intersect, angular);
-  angular.extend(intersect, {
+  angular.extend(intersect, angular, {
     module: function () {
       var module = angular.extend({}, angular.module.apply(angular, arguments));
       return getWrappedComponent(module);
