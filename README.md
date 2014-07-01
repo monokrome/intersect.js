@@ -35,17 +35,6 @@ doesn't require getting a reference to the module that it was created within.
 The module `example` is expected to already exist, and intersect will prepare
 the reference for you.
 
-Here's an example in CoffeeScript as well:
-
-```coffee
-intersect.service 'example.services.one', [
-  'example.services.x'
-  'example.services.y'
-  'example.services.z'
-
-], (x, y, z) ->
-```
-
 This library aims to maintain 100% backwards compatibility with Angular. A
 benefit of this goal is that (if you would like to), you can call the following
 function in order to patch intersect into angular itself (although this is not
@@ -59,3 +48,26 @@ Intersect.JS will also respond properly to being used in an AMD, CommonJS, or
 NodeJS environment. This means that you wont have any pesky global `intersect`
 variable sitting around if you are using a module loader.
 
+Here's an example in CoffeeScript as well:
+
+```coffee
+intersect.service 'example.services.one', [
+  'example.services.x'
+  'example.services.y'
+  'example.services.z'
+
+], (x, y, z) ->
+```
+
+Another way to organize a service in CoffeeScript could look like this:
+
+```coffee
+intersect.service 'example.services.one', class ExampleService
+    @$inject: [
+      'example.services.x'
+      'example.services.y'
+      'example.services.z'
+    ]
+    
+    constructor: (x, y, z) ->
+```
