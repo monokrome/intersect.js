@@ -52,7 +52,7 @@ describe('intersect', function () {
     var componentType, componentTypeIndex;
     for (componentTypeIndex in wrappedComponentTypes) {
       componentType = wrappedComponentTypes[componentTypeIndex];
-      describe(componentType, function () {
+      describe('#' + componentType, function () {
         it('should automatically resolve modules', function () {
           var module = {},
               moduleSpy = sinon.stub(intersect, 'module').returns(module),
