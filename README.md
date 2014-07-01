@@ -27,19 +27,20 @@ a dot.
 intersect.service('example.services.one', ['x', 'y', 'z'], function (x, y, z) {});
 ```
 
-This might seem like a little change, but it causes Angular to seem more
-conventional in terms of CommonJS as well as provides the nice benefit that you
-don't need to keep a function inside of an array (which is a bit peculiar).
-This is especially useful in CoffeeScript, due to the following syntax being
-possible:
+This might seem like a small change, but it causes Angular to seem more
+convenient. You don't need to keep your component construction function inside
+of an array any more, and defining a new component doesn't require getting a
+reference to the module that it was created within.
+
+Here's an example in CoffeeScript as well:
 
 ```coffee
 intersect.service 'example.services.one', [
-	'example.services.x'
-	'example.services.y'
-	'example.services.z'
+  'example.services.x'
+  'example.services.y'
+  'example.services.z'
 
-    ], (x, y, z) ->
+], (x, y, z) ->
 ```
 
 This library aims to maintain 100% backwards compatibility with Angular. A
@@ -52,6 +53,6 @@ intersect.conflict();
 ```
 
 Intersect.JS will also respond properly to being used in an AMD, CommonJS, or
-NodeJS environment. This means that you wont have any pesky global `interface`
+NodeJS environment. This means that you wont have any pesky global `intersect`
 variable sitting around if you are using a module loader.
 
