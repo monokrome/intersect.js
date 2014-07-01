@@ -48,36 +48,34 @@ describe('intersect', function () {
     angular.module.restore();
   });
 
-  describe('intersect', function () {
-    var componentType, componentTypeIndex;
-    for (componentTypeIndex in wrappedComponentTypes) {
-      componentType = wrappedComponentTypes[componentTypeIndex];
-      describe('#' + componentType, function () {
-        it('should automatically resolve modules', function () {
-          var module = {},
-              moduleSpy = sinon.stub(intersect, 'module').returns(module),
-              componentName = 'example.things.fakeProvider',
-              providerSpy;
+  var componentType, componentTypeIndex;
+  for (componentTypeIndex in wrappedComponentTypes) {
+    componentType = wrappedComponentTypes[componentTypeIndex];
+    describe('#' + componentType, function () {
+      it('should automatically resolve modules', function () {
+        var module = {},
+            moduleSpy = sinon.stub(intersect, 'module').returns(module),
+            componentName = 'example.things.fakeProvider',
+            providerSpy;
 
-          module[componentType] = (function () {});
-          providerSpy = sinon.stub(module, componentType);
+        module[componentType] = (function () {});
+        providerSpy = sinon.stub(module, componentType);
 
-          intersect[componentType](componentName);
+        intersect[componentType](componentName);
 
-          chai
-            .expect(intersect.module.calledWith('example'))
-            .to.equal(true);
+        chai
+          .expect(intersect.module.calledWith('example'))
+          .to.equal(true);
 
-          chai
-            .expect(module[componentType].calledWith(componentName))
-            .to.equal(true);
+        chai
+          .expect(module[componentType].calledWith(componentName))
+          .to.equal(true);
 
-          providerSpy.restore()
-          moduleSpy.restore();
-        });
+        providerSpy.restore()
+        moduleSpy.restore();
       });
-    }
-  });
+    });
+  }
 
   describe('$injector', function () {
     it('should call angular.module with expected arguments', function () {
