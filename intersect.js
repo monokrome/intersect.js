@@ -33,8 +33,15 @@
 
     getModuleComponent = function (componentType) {
       return (function (name, dependencies, fn) {
-        var moduleIndex = name.indexOf(':', '.'),
-            module = intersect.module(name.slice(0, moduleIndex));
+        var moduleIndex = name.indexOf(':'),
+            module;
+
+        if (moduleIndex === -1) moduleIndex = name.indexOf('.');
+
+        // Assume module has same name as component
+        if (moduleIndex === -1) moduleIndex = 0;
+
+        module = intersect.module(name.slice(0, moduleIndex));
         return module[componentType](name, dependencies, fn);
       });
     };
