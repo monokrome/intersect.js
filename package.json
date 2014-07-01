@@ -4,10 +4,10 @@
   "description": "Some thin wrappers around Spine.js + Angular.js",
   "main": "intersect.js",
   "dependencies": {
-    "angular": "^1.2.15",
+    "angular": "^1.2.18",
     "chai": "^1.9.1",
-    "glp": "^0.1.10",
-    "sinon": "^1.9.1"
+    "glp": "^0.1.16",
+    "sinon": "^1.10.2"
   },
   "devDependencies": {
     "mocha": "^1.18.2"
