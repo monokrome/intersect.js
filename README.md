@@ -1,6 +1,8 @@
 intersect.js
 ============
 
+[![Build Status](https://travis-ci.org/monokrome/intersect.js.svg?branch=master)](https://travis-ci.org/monokrome/intersect.js)
+
 Some thin wrappers around Angular.js
 
 
