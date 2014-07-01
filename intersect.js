@@ -55,7 +55,9 @@
       if (typeof providedRoot === 'undefined') {
         providedRoot = root;
       }
-      root.angular = intersect;
+      if (typeof root.angular !== 'undefined') {
+        root.angular = intersect;
+      }
     },
     provider: getModuleComponent('provider'),
     factory: getModuleComponent('factory'),
