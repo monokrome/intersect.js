@@ -77,7 +77,7 @@ describe('intersect', function () {
     });
   }
 
-  describe('module', function () {
+  describe('#module', function () {
     it('should call angular.module with expected arguments', function () {
       chai
         .expect(angular.module.called)
