@@ -67,6 +67,5 @@
     directive: getModuleComponent('directive'),
   });
 
-
   return intersect;
 }));
