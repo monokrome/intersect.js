@@ -29,6 +29,14 @@
         constant: extendInjection(module, 'constant'),
         directive: extendInjection(module, 'directive'),
       });
+    },
+
+    getModuleComponent = function (componentType) {
+      return (function (name, dependencies, fn) {
+        var moduleIndex = name.indexOf('.'),
+            module = intersect.module(name.slice(0, moduleIndex));
+        return module[componentType](name, dependencies, fn);
+      });
     };
 
   angular.extend(intersect, angular, {
@@ -41,8 +49,15 @@
         providedRoot = root;
       }
       root.angular = intersect;
-    }
+    },
+    provider: getModuleComponent('provider'),
+    factory: getModuleComponent('factory'),
+    service: getModuleComponent('service'),
+    value: getModuleComponent('value'),
+    constant: getModuleComponent('constant'),
+    directive: getModuleComponent('directive'),
   });
+
 
   return intersect;
 }));
