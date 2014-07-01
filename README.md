@@ -13,8 +13,16 @@ to define a service like this:
 
 ```javascript
 intersect.module('example')
-	.service('example.services.one', ['x', 'y', 'z'], function (x, y, z) {});
+	.service('example.services.one', ['x', 'y', 'z'], function (x, y, z)
+	{});
+```
 
+This is a common - but a bit redundant - pattern in Angular. Intersect can get
+rid of this boilerplate because the service starts with module name followed by
+a dot.
+
+```javascript
+intersect.service('example.services.one', ['x', 'y', 'z'], function (x, y, z) {});
 ```
 
 This might seem like a little change, but it causes Angular to seem more
@@ -24,14 +32,12 @@ This is especially useful in CoffeeScript, due to the following syntax being
 possible:
 
 ```coffee
-intersect.module 'example'
-	.service 'example.services.one', [
-		'x'
-		'y'
-		'z'
+intersect.service 'example.services.one', [
+	'example.services.x'
+	'example.services.y'
+	'example.services.z'
 
-	], (x, y, z) ->
-
+    ], (x, y, z) ->
 ```
 
 This library aims to maintain 100% backwards compatibility with Angular. A
@@ -41,49 +47,9 @@ recommended) if necessary:
 
 ```javascript
 intersect.conflict();
-
 ```
 
 Intersect.JS will also respond properly to being used in an AMD, CommonJS, or
 NodeJS environment. This means that you wont have any pesky global `interface`
 variable sitting around if you are using a module loader.
 
-
-TODO
-----
-
-On top of this, a few new goodies are planned. The final interface is expected
-to look like so in JavaScript:
-
-```javascript
-// This service becomes: 'example.service.one'
-intersect.module('example')
-	.service('one', [
-		'example.service.two',
-		'some.service.somewhere',
-		'some.controller.elsewhere'
-
-	], function ($) {
-		console.log($.example.service.two);
-		console.log($.some.service.somewhere);
-		console.log($.some.controller.elsewhere);
-	});
-
-```
-
-or in CoffeeScript:
-
-```coffee
-# This service becomes: 'example.service.one'
-intersect.module 'example'
-    .service 'one', [
-        'example.service.two'
-        'some.service.somewhere'
-        'some.controller.elsewhere'
-        
-    ], ($) ->
-        console.log $.example.service.two
-        console.log $.some.service.somewhere
-        console.log $.some.controller.elsewhere
-
-```
