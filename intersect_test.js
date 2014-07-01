@@ -113,7 +113,7 @@ describe('intersect', function () {
               ]
             });
 
-            it('should support all standard angular interfaces', function () {
+            it('should support regular standard angular usage', function () {
               this.module[type](
                 this.componentName,
                 this.dependencies.concat(this.definition)
