@@ -4,3 +4,6 @@
 # Non-git hidden files
 /.*
 !/.git*
+
+# Allow Travis configuration
+!/.travis.yml
