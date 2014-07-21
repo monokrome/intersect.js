@@ -62,7 +62,7 @@ intersect.service 'example.services.one', [
 Another way to organize a service in CoffeeScript could look like this:
 
 ```coffee
-intersect.service 'example.services.one', class ExampleService
+intersect.service 'example.services.one', class
   @$inject: [
     'example.services.x'
     'example.services.y'
