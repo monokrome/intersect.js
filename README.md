@@ -1,7 +1,7 @@
 intersect.js
 ============
 
-[![Build Status](https://travis-ci.org/monokrome/intersect.js.svg?branch=master)](https://travis-ci.org/monokrome/intersect.js)
+[![Build Status](https://travis-ci.org/monokrome/intersect.js.svg?branch=master)](https://travis-ci.org/monokrome/intersect.js) [![Greenkeeper badge](https://badges.greenkeeper.io/monokrome/intersect.js.svg)](https://greenkeeper.io/)
 
 Some thin wrappers around Angular.js
 
